@@ -1,0 +1,15 @@
+body{
+	margin:1em;
+}
+h1{
+	color: orange;
+}
+h2{
+	color: #888a85;
+}
+input{
+	margin:8px;
+}
+.btn{
+	margin:1em;
+}

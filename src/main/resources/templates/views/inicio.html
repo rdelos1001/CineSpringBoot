@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<meta charset="UTF-8">
+	<title>Inicio</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="/css/Bootstrap/bootstrap.min.css">
+	
+	<!-- Personal CSS -->
+  	<link rel="stylesheet" href="/css/main.css">
+ 	<link rel="icon" type="image/ico" href="img/favicon.ico">
+ 	
+ 	<!-- Personal JS -->
+	<script type="text/javascript">
+		function changePage(url){
+			 window.location.href = url;
+		}	
+		function añadirAdmin(){
+			var visiblility = document.getElementById('añadirAdmin').style.visibility;
+			if(visiblility=="hidden"){
+				document.getElementById('añadirAdmin').style.visibility="";
+				document.getElementById('btnAñadirAdmin').textContent="Ocultar nuevo admin"
+
+		    }else{
+		    	document.getElementById('añadirAdmin').style.visibility="hidden";
+				document.getElementById('btnAñadirAdmin').textContent="Nuevo admin"
+
+		    }
+		}
+	</script>
+	
+</head>
+<body>
+ 	<div class="container">
+		<div class="row">
+			<div class=col-6>
+				
+				<button onclick="changePage('/')" class="btn btn-warning">Volver</button>
+				<form method="get" action="cerrarSesion">
+					<input type="hidden" name="funcion" value=2>
+					<button type="submit" title="Inicia una nueva sesión" class="btn btn-success">CerrarSesion</button>
+				</form>
+				
+			</div>
+			<div class="col-6 text-right">
+				
+				<label th:text="@{'Usuario: '+${administradorLogeado.usuario}}">Usuario: </label><br>
+				<label th:text="@{'Contraseña: '+${administradorLogeado.pwd}}">Password: </label>
+			</div>
+		</div>
+		<h1>Inicio</h1>
+	<form method="get" action="mantenimiento">
+		<input type="submit" class="btn btn-success" value="Mantenimiento de peliculas"></input>
+	</form>
+	
+	
+	<button onclick="añadirAdmin()" id="btnAñadirAdmin" class="btn btn-dark">Añadir admin</button>	
+	
+	<div id="añadirAdmin" style="visibility:hidden">
+		<form method="post" action="anadirAdmin">
+			<label>Nombre de usuario:</label>
+			<input type="text" name="usuario"/><br>
+			<label>Contraseña:</label>
+			<input type="password" name="usuarioPass"/><br>
+			<input type="submit" class="btn btn-secondary" value="confirmar"></input>
+		</form>	
+	</div>
+	
+	
+	
+	
+	</div>
+	<!-- Bootstrap -->
+	<script type="text/javascript" src="/css/Bootstrap/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="/css/Bootstrap/popper.min.js"></script>
+	<script type="text/javascript" src="/css/Bootstrap/bootstrap.min.js"></script>
+
+</body>
+</html>

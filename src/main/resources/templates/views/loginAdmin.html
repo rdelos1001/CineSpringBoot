@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Login</title>
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="/css/Bootstrap/bootstrap.min.css">
+		
+		<!-- Personal CSS -->
+ 		<link rel="stylesheet" href="/css/main.css">
+ 		<link rel="stylesheet" href="/css/loginAdmin.css">
+ 		
+ 		<link rel="icon" type="image/ico" href="img/favicon.ico">
+ 			<script type="text/javascript">
+			function changePage(url){
+				 window.location.href = url;
+			}	
+		</script>
+		
+	</head>
+	<body>
+			<button onclick="changePage('/')" class="btn btn-warning">Volver</button>
+		<h1>Login Administradores</h1>
+		<form method="post" action="logear" th:object="${adminLogin}">
+			<input type="hidden" name="action" value="3"></input>
+			<label >Usuario:</label><br>
+			<input type="text" name="nombreUsuario" th:field="${adminLogin.usuario}" required autofocus></input><br>
+			<label>Contraseña:</label><br>
+			<input type="password" name="usuario" th:field="${adminLogin.pwd}" required></input><br>
+			<input type="submit" value="Entrar"></input>
+		</form>
+		<div th:if="${errores.size}>0">
+			<label th:each="error:${errores}" th:text="${error}"></label>
+		</div>
+		<!-- Bootstrap -->
+		<script type="text/javascript" src="/css/Bootstrap/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript" src="/css/Bootstrap/popper.min.js"></script>
+		<script type="text/javascript" src="/css/Bootstrap/bootstrap.min.js"></script>
+	</body>
+</html>

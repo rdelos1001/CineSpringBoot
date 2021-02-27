@@ -1,0 +1,27 @@
+table {
+  border: 1px solid black;
+  width:100%;
+}
+#resultadoBusqueda{
+	text-align: left;
+	margin-top: 1em;
+}
+#busqueda{
+	text-align: right;
+	margin-top: 1em;
+}
+th{
+	background-color:black;
+	color:white;
+	padding:6px 5px;
+	text-align:center;
+}
+td{
+	padding: 7px;
+}
+tr:nth-child(2n+3) {
+	background-color: lightgrey;
+}
+input{
+	margin-left:5px;
+}

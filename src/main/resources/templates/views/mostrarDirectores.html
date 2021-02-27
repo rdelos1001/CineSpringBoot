@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Directores buscados</title>
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="css/Bootstrap/bootstrap.min.css">
+		
+		<!-- Personal CSS -->
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/mostrarDirectores.css">
+		<link rel="icon" type="image/ico" href="img/favicon.ico">
+		<script type="text/javascript">
+			function changePage(url){
+				 window.location.href = url;
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="changePage('/')" class="btn btn-warning">Volver</button>
+		
+		<form method="get" action="nuevaSesion">
+			<input type="hidden" name="funcion" value=1>
+			<button type="submit" title="Inicia una nueva sesi�n" class="btn btn-primary">Nueva sesión</button>
+		</form>
+		<h1>Directores buscados</h1>
+		<ul th:if="${directores.size }>0">
+			<li th:each="director:${directores}" th:text="${director.nombre }"></li>
+		</ul>
+		<label th:if="${directores.size }<=0">No has buscado ningún director</label>
+		
+		<!-- Bootstrap -->
+		<script type="text/javascript" src="css/Bootstrap/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript" src="css/Bootstrap/popper.min.js"></script>
+		<script type="text/javascript" src="css/Bootstrap/bootstrap.min.js"></script>
+	</body>
+</html>

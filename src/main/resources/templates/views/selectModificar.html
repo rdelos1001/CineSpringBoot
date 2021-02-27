@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Seleccionar película</title>
+		<meta lang="es"></meta>
+		<meta charset="UTF-8"></meta>
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="css/Bootstrap/bootstrap.min.css">
+		
+		<!-- Personal CSS -->
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="icon" type="image/ico" href="img/favicon.ico">
+		<link rel="stylesheet" href="css/mostrarPeliculas.css">
+	
+		<script type="text/javascript">
+			function changePage(url){
+				 window.location.href = url;
+			}	
+		</script>
+	</head>
+	<body>
+	
+		<button onclick="changePage('mantenimiento')" class="btn btn-warning">Volver</button>		
+
+		<div class="container">
+		<h1>Modificar</h1>
+			<div class="row">
+				<div class="col-7">
+					<h2>Peliculas</h2>
+				</div>				
+			</div>
+			<div class="row">
+	
+				<table th:if="${peliculas.size}>0">
+					<tr>
+						<th>Titulo</th>
+						<th>Edad recomendada</th>
+						<th>Fecha de estreno</th>
+						<th>Director</th>
+					</tr>
+					<tr th:each="pelicula,i: ${peliculas}">
+						<td><a th:attr="href=@{'modificar?pos='+${i.index}}" th:text="${pelicula.titulo}"></a></td>
+						<td th:text="${pelicula.edadMinima}"></td>
+						<td th:text="${pelicula.fechaEstreno}"></td>
+						<td th:text="${pelicula.director.nombre}"></td>	
+					</tr>
+				</table>
+				<label th:if="${peliculas.size }<=0">No hay peliculas</label>
+			</div>
+		</div>
+
+	
+		<!-- Bootstrap -->
+		<script type="text/javascript" src="css/Bootstrap/jquery-3.5.1.min.js"></script>
+		<script type="text/javascript" src="css/Bootstrap/popper.min.js"></script>
+		<script type="text/javascript" src="css/Bootstrap/bootstrap.min.js"></script>
+	
+	</body>
+</html>
